@@ -1,6 +1,11 @@
+@import url(../fonts/clear-sans.css);
 html, body {
-  background: #9FCC93;
-  color: #333333;
+  margin: 0;
+  padding: 0;
+  background: #60D6a9;
+  color: #313D47;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
 }
 
 body {
@@ -11,6 +16,8 @@ body {
   width: 980px;
   margin: 0 auto;
   min-height: 600px;
+  padding: 20px;
 
-  background: #CAE6C2;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.3);
 }
