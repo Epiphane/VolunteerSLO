@@ -8,13 +8,17 @@
  * each view. This is just an "overhead" manager.
  */
 
-var volunteerSLO = angular.module('volunteerSLO', ['ngRoute']);
+var volunteerSLO = angular.module('volunteerSLO', [
+   'ngRoute',
+   'volunteerSLOControllers'
+]);
 
 volunteerSLO.config(['$routeProvider',
    function($routeProvider) {
       $routeProvider.
          when('/home.html', {
-            templateUrl: 'welcome-msg.html'
+            templateUrl: 'partials/home.html',
+            controller: 'HomepageCtrl'
          }).otherwise({
              redirectTo: '/home.html'
           });
