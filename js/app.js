@@ -16,10 +16,15 @@ var volunteerSLO = angular.module('volunteerSLO', [
 volunteerSLO.config(['$routeProvider',
    function($routeProvider) {
       $routeProvider.
-         when('/home.html', {
+         when('/', {
             templateUrl: 'partials/home.html',
             controller: 'HomepageCtrl'
-         }).otherwise({
-             redirectTo: '/home.html'
-          });
+         }).
+         when('/event/:eventId', {
+            templateUrl: 'partials/event.html',
+            controller: 'EventCtrl'
+         }).
+         otherwise({
+            redirectTo: '/'
+         });
    }]);

@@ -1,0 +1,16 @@
+html, body {
+  background: #9FCC93;
+  color: #333333;
+}
+
+body {
+  margin-top: 80px;
+}
+
+#content {
+  width: 980px;
+  margin: 0 auto;
+  min-height: 600px;
+
+  background: #CAE6C2;
+}

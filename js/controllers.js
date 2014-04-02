@@ -14,3 +14,9 @@ volunteerSLOControllers.controller('HomepageCtrl', ['$scope',
       $scope.name = 'Volunteer SLO';
    }
 ]);
+
+volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams',
+   function($scope, $routeParams) {
+      $scope.eventId = $routeParams.eventId;
+   }
+]);
