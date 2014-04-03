@@ -2,7 +2,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #5ADFDF;
+  background: #A7E4E4;
   color: #313D47;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
@@ -44,7 +44,7 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 1040px;
   }
 }
 .container-narrow > hr {
@@ -55,10 +55,16 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+
+  padding: 10px;
 }
 .jumbotron .btn {
   padding: 14px 24px;
   font-size: 21px;
+}
+.container .jumbotron .banner {
+  margin: -48px -60px 25px -60px;
 }
 
 /* Supporting marketing content */
