@@ -11,6 +11,7 @@
 var volunteerSLO = angular.module('volunteerSLO', [
    'ngRoute',
    'volunteerSLOControllers',
+   'volunteerSLOFilters',
    'ui.bootstrap'
 ]);
 

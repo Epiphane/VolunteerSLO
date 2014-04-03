@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-8">
       <div class="col-md-4" ng-repeat="category in categories">
-          <input type="checkbox" data-ng-model="{{category.varName}}">
+          <input type="checkbox" class="category-box-{{category.id}}" ng-click="setCategory(category.id)">
           {{category.name}}
       </div>
     </div>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6" ng-repeat="event in events | filter: {title: eventName, categories: types }">
+  <div class="col-md-6" ng-repeat="event in events | eventList: eventName:categoryFilters">
     <a href="#/events/{{event.id}}">
       <div class="col-md-10 col-md-offset-1 event-bubble">
         <div class="col-md-4 image">

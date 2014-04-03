@@ -28,36 +28,39 @@ volunteerSLOControllers.controller('HomepageCtrl', ['$scope',
          { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
             volunteers: 9, signedUp: 6 }
       ];
-
-      $scope.leftColumn = function() {
-
-      }
    }
 ]);
 
 volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams',
    function($scope, $routeParams) {
       $scope.eventId = $routeParams.eventId;
+		$scope.categoryFilters = [];
 
       $scope.events = [
          { id: 0, title: 'Paint Dan\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: ['Physical', 'One-time'] },
+            volunteers: 9, signedUp: 6, categories: [0, 1] },
          { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: ['One-time'] },
+            volunteers: 9, signedUp: 6, categories: [0, 1] },
          { id: 0, title: 'Paint Jam\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: ['Physical', 'One-time'] },
+            volunteers: 9, signedUp: 6, categories: [0, 1] },
          { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: ['Physical', 'One-time'] },
+            volunteers: 9, signedUp: 6, categories: [0, 1] },
          { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: ['Physical', 'One-time'] },
+            volunteers: 9, signedUp: 6, categories: [0, 1] },
          { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: ['Physical', 'One-time'] }
+            volunteers: 9, signedUp: 6, categories: [0, 1] }
       ];
 
       $scope.categories = [
-         { varName: 'physical', name: 'Physical' },
-         { varName: 'onetime', name: 'One-time' }
+         { id: 0, name: 'Physical' },
+         { id: 1, name: 'One-time' }
       ];
+
+      $scope.setCategory = function(categoryID) {
+			console.log($(".category-box-"+categoryID)[0].checked);
+			console.log(categoryID);
+			$scope.categoryFilters.push(categoryID);
+		}
    }
 ]);
 
