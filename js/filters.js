@@ -14,8 +14,11 @@ volunteerSLOFilters.filter('eventList', function() {
       var newEvents = [];
       var maxScore;
 
+      if(eventName)
+         eventName = eventName.toLowerCase();
+
       events.forEach(function(event) {
-         if(event.title.search(eventName) != -1) {
+         if(event.title.toLowerCase().search(eventName) != -1) {
             event.score = maxScore = 0;
             for(var ndx = 0; ndx < categoryFilters.length; ndx ++) {
                if(categoryFilters[ndx]) {
