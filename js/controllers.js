@@ -40,15 +40,15 @@ volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams',
          { id: 0, title: 'Paint Dan\'s fence!', description: 'Let\'s all go paint a fence!',
             volunteers: 9, signedUp: 6, categories: [0, 1] },
          { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [0, 1] },
+            volunteers: 9, signedUp: 6, categories: [1] },
          { id: 0, title: 'Paint Jam\'s fence!', description: 'Let\'s all go paint a fence!',
+            volunteers: 9, signedUp: 6, categories: [1] },
+         { id: 0, title: 'Paint Bob\'s fence for fun!', description: 'Let\'s all go paint a fence!',
             volunteers: 9, signedUp: 6, categories: [0, 1] },
          { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [0, 1] },
+            volunteers: 9, signedUp: 6, categories: [0] },
          { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [0, 1] },
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [0, 1] }
+            volunteers: 9, signedUp: 6, categories: [0] }
       ];
 
       $scope.categories = [
@@ -57,9 +57,7 @@ volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams',
       ];
 
       $scope.setCategory = function(categoryID) {
-			console.log($(".category-box-"+categoryID)[0].checked);
-			console.log(categoryID);
-			$scope.categoryFilters.push(categoryID);
+         $scope.categoryFilters[categoryID] = $(".category-box-"+categoryID)[0].checked;
 		}
    }
 ]);
