@@ -21,11 +21,11 @@ volunteerSLO.config(['$routeProvider',
             templateUrl: 'partials/home.html',
             controller: 'HomepageCtrl'
          }).
-         when('/event/:eventId', {
+         when('/events/:eventId', {
             templateUrl: 'partials/event.html',
             controller: 'EventCtrl'
          }).
-          when('/about', {
+          when('/events', {
              templateUrl: 'partials/event.html',
              controller: 'EventCtrl'
           }).
@@ -38,7 +38,6 @@ volunteerSLO.config(['$routeProvider',
          restrict: 'A',
          link: function(scope, element) {
             var $ul = $(element);
-            $ul.addClass("nav");
 
             var $tabs = $ul.children();
             var tabMap = {};
@@ -51,7 +50,14 @@ volunteerSLO.config(['$routeProvider',
             scope.location = location;
             scope.$watch('location.path()', function(newPath) {
                $tabs.removeClass("active");
-               tabMap[newPath].addClass("active");
+               if(tabMap[newPath])
+                  tabMap[newPath].addClass("active");
+               else {
+                  newPath = newPath.substring(0, newPath.substring(1).indexOf("/") + 1);
+                  
+                  if(tabMap[newPath])
+                     tabMap[newPath].addClass("active");
+               }
             });
          }
       };
