@@ -10,7 +10,8 @@
 
 var volunteerSLO = angular.module('volunteerSLO', [
    'ngRoute',
-   'volunteerSLOControllers'
+   'volunteerSLOControllers',
+   'ui.bootstrap'
 ]);
 
 volunteerSLO.config(['$routeProvider',
@@ -24,7 +25,34 @@ volunteerSLO.config(['$routeProvider',
             templateUrl: 'partials/event.html',
             controller: 'EventCtrl'
          }).
+          when('/about', {
+             templateUrl: 'partials/event.html',
+             controller: 'EventCtrl'
+          }).
          otherwise({
             redirectTo: '/'
          });
+   }]).
+   directive('navTabs', ['$location', function(location) {
+      return {
+         restrict: 'A',
+         link: function(scope, element) {
+            var $ul = $(element);
+            $ul.addClass("nav");
+
+            var $tabs = $ul.children();
+            var tabMap = {};
+            $tabs.each(function() {
+               var $li = $(this);
+               //Substring 1 to remove the # at the beginning (because location.path() below does not return the #)
+               tabMap[$li.find('a').attr('href').substring(1)] = $li;
+            });
+
+            scope.location = location;
+            scope.$watch('location.path()', function(newPath) {
+               $tabs.removeClass("active");
+               tabMap[newPath].addClass("active");
+            });
+         }
+      };
    }]);
