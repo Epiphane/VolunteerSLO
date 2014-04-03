@@ -75,6 +75,21 @@ body {
   margin-top: 28px;
 }
 
+.event-bubble {
+  background-color: #eee;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  height: 120px;
+  padding-left: 0;
+}
+
+.event-bubble .image {
+  overflow: hidden;
+  height: 120px;
+  padding: 0;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
