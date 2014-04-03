@@ -1,21 +1,21 @@
-
-
 <div class="jumbotron">
   <img class="banner" src="img/banner_1.jpg">
   <p class="lead">{{banner}}</p>
-  <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today!</a></p>
+  <p><a class="btn btn-lg btn-success" href="#/events" role="button">Volunteer today!</a></p>
 </div>
 
 <div class="row">
   <div class="col-md-6" ng-repeat="event in events">
-    <div class="col-md-10 col-md-offset-1 event-bubble">
-      <div class="col-md-4 image">
-        <img class="banner" src="img/event_1.jpg">
+    <a href="#/events/{{event.id}}">
+      <div class="col-md-10 col-md-offset-1 event-bubble">
+        <div class="col-md-4 image">
+          <img class="banner" src="img/event_1.jpg">
+        </div>
+        <div class="col-md-8">
+          <h4>{{event.title}}</h4>
+          <p>{{event.description}}</p>
+        </div>
       </div>
-      <div class="col-md-8">
-        <h4><a href="#/events/{{event.id}}">{{event.title}}</a></h4>
-        <p>{{event.description}}</p>
-      </div>
-    </div>
+    </a>
   </div>
 </div>

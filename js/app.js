@@ -26,8 +26,8 @@ volunteerSLO.config(['$routeProvider',
             controller: 'EventCtrl'
          }).
           when('/events', {
-             templateUrl: 'partials/event.html',
-             controller: 'EventCtrl'
+             templateUrl: 'partials/events.html',
+             controller: 'EventListCtrl'
           }).
          otherwise({
             redirectTo: '/'
@@ -54,7 +54,7 @@ volunteerSLO.config(['$routeProvider',
                   tabMap[newPath].addClass("active");
                else {
                   newPath = newPath.substring(0, newPath.substring(1).indexOf("/") + 1);
-                  
+
                   if(tabMap[newPath])
                      tabMap[newPath].addClass("active");
                }
