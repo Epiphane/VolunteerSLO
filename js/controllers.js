@@ -9,25 +9,16 @@
 
 var volunteerSLOControllers = angular.module('volunteerSLOControllers', []);
 
-volunteerSLOControllers.controller('HomepageCtrl', ['$scope',
-   function($scope) {
+volunteerSLOControllers.controller('HomepageCtrl', ['$scope', '$http',
+   function($scope, $http) {
       $scope.name = 'Volunteer SLO';
       $scope.banner = 'What are you waiting for?';
 
-      $scope.events = [
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6 },
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6 },
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6 },
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6 },
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6 },
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6 }
-      ];
+      $scope.events = [];
+
+      $http.post('index.php', { action: 'eventList', params: [], featured: true }).success(function(data) {
+         $scope.events = data;
+      });
    }
 ]);
 
