@@ -31,25 +31,17 @@ volunteerSLOControllers.controller('HomepageCtrl', ['$scope',
    }
 ]);
 
-volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams',
-   function($scope, $routeParams) {
+volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams', '$http',
+   function($scope, $routeParams, $http) {
       $scope.eventId = $routeParams.eventId;
 		$scope.categoryFilters = [];
 
-      $scope.events = [
-         { id: 0, title: 'Paint Dan\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [0, 1] },
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [1] },
-         { id: 0, title: 'Paint Jam\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [1] },
-         { id: 0, title: 'Paint Bob\'s fence for fun!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [0, 1] },
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [0] },
-         { id: 0, title: 'Paint Bob\'s fence!', description: 'Let\'s all go paint a fence!',
-            volunteers: 9, signedUp: 6, categories: [0] }
-      ];
+      //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+      $http.post('index.php', { action: 'eventList', params: [] }).success(function(data) {
+         $scope.events = data;
+      });
+
+      $scope.events = [];
 
       $scope.categories = [
          { id: 0, name: 'Physical' },
