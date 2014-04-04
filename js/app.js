@@ -10,6 +10,7 @@
 
 var volunteerSLO = angular.module('volunteerSLO', [
    'ngRoute',
+   'ngAnimate',
    'volunteerSLOControllers',
    'volunteerSLOFilters',
    'ui.bootstrap'

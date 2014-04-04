@@ -104,6 +104,60 @@ body {
   line-height: 1;
 }
 
+/* .event-container.ng-enter {
+  -webkit-animation: 0.5s expand-in;
+  -moz-animation: 0.5s expand-in;
+  -o-animation: 0.5s expand-in;
+  animation: 0.5s expand-in;
+  z-index: 100;
+}
+
+.event-container.ng-leave {
+  -webkit-animation: 0.5s shrink-out;
+  -moz-animation: 0.5s shrink-out;
+  -o-animation: 0.5s shrink-out;
+  animation: 0.5s shrink-out;
+  z-index:99;
+}
+
+@keyframes expand-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes expand-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes expand-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shrink-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@-moz-keyframes shrink-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@-webkit-keyframes shrink-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+} */
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */

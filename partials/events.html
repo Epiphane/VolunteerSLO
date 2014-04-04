@@ -17,7 +17,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6" ng-repeat="event in events | eventList: eventName:categoryFilters" ng-animate="animate">
+  <div class="col-md-6 event-container" ng-repeat="event in events | eventList: eventName:categoryFilters" ng-animate="animate">
     <a href="#/events/{{event.id}}">
       <div class="col-md-10 col-md-offset-1 event-bubble">
         <div class="col-md-4 image">
