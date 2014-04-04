@@ -36,12 +36,11 @@ volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams', '
       $scope.eventId = $routeParams.eventId;
 		$scope.categoryFilters = [];
 
-      //$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+      $scope.events = [];
+
       $http.post('index.php', { action: 'eventList', params: [] }).success(function(data) {
          $scope.events = data;
       });
-
-      $scope.events = [];
 
       $scope.categories = [
          { id: 0, name: 'Physical' },
@@ -54,8 +53,14 @@ volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams', '
    }
 ]);
 
-volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams',
-   function($scope, $routeParams) {
+volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams', '$http',
+   function($scope, $routeParams, $http) {
       $scope.eventId = $routeParams.eventId;
+
+      $scope.event = null;
+
+      $http.post('index.php', { action: 'event', id: $scope.eventId }).success(function(data) {
+         $scope.event = data;
+      });
    }
 ]);
