@@ -56,7 +56,7 @@ $events = array(
         'img_url' => 'http://localhost/VolunteerSLO/img/event_1.jpg',
         'volunteers' => 9,
         'signedUp' => 6,
-        'categories' => array(0, 2)),
+        'categories' => array(0, 1, 2)),
     (object) array(
         'title' => "Paint Ian's fence!",
         'description' => "Let's all go paint a fence!",

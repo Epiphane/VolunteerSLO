@@ -33,9 +33,15 @@ volunteerSLOFilters.filter('eventList', function() {
          }
       });
 
+      if(maxScore > 0) {
+         newEvents.sort(function(a, b) {
+            if(b.score - a.score == 0) {
+               return 1;
+            }
+            return b.score - a.score;
+         });
+      }
       // Sort the events by score and return the list
-      return newEvents.sort(function(a, b) {
-         return b.score - a.score;
-      });
+      return newEvents;
    };
 });
