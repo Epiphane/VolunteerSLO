@@ -1,4 +1,24 @@
-THIS IS THE {{eventId}} EVENT.
-
-{{event.title}}<br>
-        {{event.description}}
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-3">
+      <img class="banner event-featured-image" ng-src="{{event.img_url}}">
+    </div>
+    <div class="col-md-9">
+      <h1>{{event.title}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group input-group-md">
+        <span class="input-group-addon">Filter</span>
+        <input type="text" class="form-control" ng-model="eventName" placeholder="Event Name">
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="col-md-4" ng-repeat="category in categories">
+        <input type="checkbox" class="category-box-{{category.id}}" ng-click="setCategory(category.id)">
+        {{category.name}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -64,7 +64,8 @@ body {
   font-size: 21px;
 }
 .container .jumbotron .banner {
-  margin: -48px -60px 25px -60px;
+  margin: -10px -60px 25px -60px;
+  float: left;
 }
 
 /* Supporting marketing content */
