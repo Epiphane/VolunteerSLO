@@ -104,8 +104,6 @@ if($params->action == 'eventList') {
         echo json_encode($event);
     }
     echo "]";
-    ?>
-<?
 }
 elseif($params->action == 'event') {
     if($params->id >= 0 && $params->id < count($events)) {

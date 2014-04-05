@@ -16,7 +16,7 @@ volunteerSLOControllers.controller('HomepageCtrl', ['$scope', '$http',
 
       $scope.events = [];
 
-      $http.post('index.php', { action: 'eventList', params: [], featured: true }).success(function(data) {
+      $http.post('srv.php', { action: 'eventList', params: [], featured: true }).success(function(data) {
          $scope.events = data;
       });
    }
@@ -29,7 +29,7 @@ volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams', '
 
       $scope.events = [];
 
-      $http.post('index.php', { action: 'eventList', params: [] }).success(function(data) {
+      $http.post('srv.php', { action: 'eventList', params: [] }).success(function(data) {
          $scope.events = data;
       });
 
@@ -50,7 +50,7 @@ volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams', '$htt
 
       $scope.event = null;
 
-      $http.post('index.php', { action: 'event', id: $scope.eventId }).success(function(data) {
+      $http.post('srv.php', { action: 'event', id: $scope.eventId }).success(function(data) {
          $scope.event = data;
       });
    }
