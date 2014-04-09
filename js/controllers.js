@@ -9,7 +9,46 @@
 
 var volunteerSLOControllers = angular.module('volunteerSLOControllers', []);
 
-volunteerSLOControllers.controller('HomepageCtrl', ['$scope', '$http',
+volunteerSLOControllers.config(['FacebookProvider',
+   function(FacebookProvider) {
+      FacebookProvider.setAppId('226419177558166');
+
+      FacebookProvider.init()
+   }
+]);
+
+volunteerSLOControllers.controller('HeaderCtrl', ['$scope', 'Facebook', '$location',
+   function($scope, Facebook, location) {
+      $scope.loggedIn = false;
+
+      $scope.$watch(function() { return Facebook.loggedIn; }, function(loggedIn) {
+         $scope.loggedIn = !!loggedIn;
+      });
+
+      Facebook.getLoginStatus(function(response) {
+         if(response.status == 'connected') {
+            Facebook.api('/me', function(response) {
+               Facebook.loggedIn = true;
+               Facebook.user = response;
+            });
+         }   
+      });
+
+      /**
+       * Logout
+       */
+      $scope.logout = function() {
+         Facebook.logout(function() {
+            $scope.$apply(function() {
+               Facebook.loggedIn = false;
+               Facebook.user = {};
+            });
+         });
+      }
+   }
+]);
+
+volunteerSLOControllers.controller('HomepageCtrl', ['$scope', '$http', 
    function($scope, $http) {
       $scope.name = 'Volunteer SLO';
       $scope.banner = 'What are you waiting for?';
@@ -44,9 +83,55 @@ volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams', '
    }
 ]);
 
-volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams', '$http',
-   function($scope, $routeParams, $http) {
+volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams', '$http', 'Facebook', 
+   function($scope, $routeParams, $http, Facebook) {
       $scope.eventId = $routeParams.eventId;
+
+      $scope.facebookReady = false;
+
+      $scope.$watch(
+         function() {
+            return Facebook.isReady();
+         },
+         function(newVal) {
+            if(newVal)
+               $scope.facebookReady = true;   
+         }
+      );
+
+      /**
+       * Intentionally login - check whether they're logged in, then make them log in.
+       */
+      $scope.IntentLogin = function() {
+         Facebook.getLoginStatus(function(response) {
+            if(response.status == 'connected') {
+               $scope.me();
+            }
+            else {
+               $scope.login();
+            }
+         });
+      }
+
+      $scope.login = function() {
+         Facebook.login(function(response) {
+            if(response.status == 'connected') {
+               $scope.me();
+            }
+         });
+      }
+
+      /**
+       * Get user info
+       */
+      $scope.me = function() {
+         Facebook.api('/me', function(response) {
+            $scope.$apply(function() {
+               Facebook.loggedIn = true;
+               Facebook.user = response;
+            });
+         });
+      }
 
       $scope.event = null;
 

@@ -11,6 +11,7 @@
 var volunteerSLO = angular.module('volunteerSLO', [
    'ngRoute',
    'ngAnimate',
+   'facebook',
    'volunteerSLOControllers',
    'volunteerSLOFilters',
    'ui.bootstrap'
@@ -27,7 +28,7 @@ volunteerSLO.config(['$routeProvider',
             templateUrl: 'partials/event.html',
             controller: 'EventCtrl'
          }).
-          when('/events', {
+         when('/events', {
              templateUrl: 'partials/events.html',
              controller: 'EventListCtrl'
           }).
@@ -46,7 +47,9 @@ volunteerSLO.config(['$routeProvider',
             $tabs.each(function() {
                var $li = $(this);
                //Substring 1 to remove the # at the beginning (because location.path() below does not return the #)
-               tabMap[$li.find('a').attr('href').substring(1)] = $li;
+               var href = $li.find('a').attr('href');
+               if(href)
+                  tabMap[href] = $li;
             });
 
             scope.location = location;
@@ -59,6 +62,24 @@ volunteerSLO.config(['$routeProvider',
 
                   if(tabMap[newPath])
                      tabMap[newPath].addClass("active");
+               }
+            });
+         }
+      };
+   }]).
+   directive('userImage', ['Facebook', function(Facebook) {
+      return {
+         restrict: 'A',
+         link: function(scope, element) {
+            scope.$watch(function() { return Facebook.user }, function(newUser) {
+               if(!jQuery.isEmptyObject(newUser)) {
+                  newUser.img_url = 'http://graph.facebook.com/' + newUser.id + '/picture';
+                  console.log(newUser.img_url);
+
+                  var $picture_li = $(element);
+                  var $picture = $picture_li.children()[0];
+                  
+                  $picture.setAttribute('src', newUser.img_url);
                }
             });
          }

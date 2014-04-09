@@ -9,6 +9,8 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-animate.min.js"></script>
   <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
+  <script src="lib/angular-facebook.js"></script>
+  <script src="lib/angular-facebook-phonegap.js"></script>
 
   <!-- Uncomment for local testing TODO: REMOVE ONE DAY
   <script src="lib/angular/angular.js"></script>
@@ -23,14 +25,20 @@
 <body>
 
 <div class="container">
-  <div class="header">
+  <div class="header" ng-controller="HeaderCtrl">
     <ul nav-tabs class="nav nav-pills pull-right">
       <li class="active"><a href="#/">Home</a></li>
       <li><a href="#/events">Events</a></li>
       <li><a href="#/volunteer">Volunteer</a></li>
       <li><a href="#/register">Register Event</a></li>
+      <li data-ng-show="loggedIn">
+         <a class="no-pad dropdown-toggle" user-image data-toggle="dropdown"><img></a>
+         <ul class="dropdown-menu pull-right">
+            <li><a data-ng-click="logout()">Log Out</a></li>
+         </ul>
+      </li>
     </ul>
-    <h3 class="text-muted">Volunteer SLO</h3>
+    <h2 class="text-muted">Volunteer SLO</h3>
   </div>
 
   <ng-view></ng-view>
