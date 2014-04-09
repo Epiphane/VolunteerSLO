@@ -88,6 +88,7 @@ volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams', '$htt
       $scope.eventId = $routeParams.eventId;
 
       $scope.facebookReady = false;
+      $scope.loggedIn = false;
 
       $scope.$watch(
          function() {
@@ -98,6 +99,12 @@ volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams', '$htt
                $scope.facebookReady = true;   
          }
       );
+
+      $scope.$watch(
+         function() { return Facebook.loggedIn; },
+         function(newVal) {
+            $scope.loggedIn = !!Facebook.loggedIn;
+         });
 
       /**
        * Intentionally login - check whether they're logged in, then make them log in.
