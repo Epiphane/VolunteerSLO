@@ -68,8 +68,9 @@ volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams', '
 
       $scope.events = [];
 
-      $http.post('srv.php', { action: 'eventList', params: [] }).success(function(data) {
+      $http.post('http://www.elliotfiske.com/volunteer/backend/event_list.php', { action: 'eventList', params: [] }).success(function(data) {
          $scope.events = data;
+         console.log(data);
       });
 
       $scope.categories = [

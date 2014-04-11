@@ -1,0 +1,1 @@
+rsync -avz . elliotfiske_elliotfiske@ssh.phx.nearlyfreespeech.net:/home/public/volunteer --exclude-from 'exclude.txt'
