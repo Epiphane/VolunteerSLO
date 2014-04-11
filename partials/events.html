@@ -17,17 +17,33 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6 event-container" ng-repeat="event in events | eventList: eventName:categoryFilters" ng-animate="animate">
-    <a href="#/events/{{event.id}}">
-      <div class="col-md-10 col-md-offset-1 event-bubble">
-        <div class="col-md-4 image">
-          <img class="banner" ng-src="{{event.img_url}}">
-        </div>
-        <div class="col-md-8">
-          <h4>{{event.title}}</h4>
-          <p>{{event.description}}</p>
-        </div>
-      </div>
-    </a>
-  </div>
+   <div class="col-md-6 event-container" ng-repeat="event in events | eventList: eventName:categoryFilters" ng-animate="animate">
+      <a href="#/events/{{event.id}}">
+         <div class="col-md-10 col-md-offset-1 event-bubble">
+            <div class="row">
+               <div class="progress progress-striped">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{event.signedUp}}" aria-valuemin="0" aria-valuemax="{{event.volunteers}}" style="width: {{event.signedUp / event.volunteers * 100}}%;">
+                     {{event.signedUp}}
+                  </div>
+                  <div data-ng-hide="true" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{needed(event)}}" aria-valuemin="0" aria-valuemax="{{event.volunteers}}" style="width: {{100 - event.signedUp / event.volunteers * 100}}%">
+                     {{event.volunteers}}
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4 image" ng-show="false">
+               <span data-ng-show="false" class="glyphicon glyphicon-trash"></span>
+               <img class="banner" ng-src="{{event.img_url}}">
+            </div>
+            <div class="col-md-9">
+               <h4>{{event.title}}</h4>
+               <p class="text-muted">{{event.organizer}}</p>
+               <p>{{event.description}}</p>
+            </div>
+            <div class="col-md-3 event-cats">
+               <span class="glyphicon glyphicon-home"></span>
+               <span class="glyphicon glyphicon-trash"></span>
+            </div>
+         </div>
+      </a>
+   </div>
 </div>

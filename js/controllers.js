@@ -80,12 +80,25 @@ volunteerSLOControllers.controller('EventListCtrl', ['$scope', '$routeParams', '
       $scope.setCategory = function(categoryID) {
          $scope.categoryFilters[categoryID] = $(".category-box-"+categoryID)[0].checked;
 		}
+
+      $scope.neededVolunteers = function(event) {
+         var bar = document.creatElement("div");
+         bar.setAttribute("class", "progress-bar progress-bar-success");
+         bar.setAttribute("role", "progressbar");
+         bar.setAttribute("aria-valuenow", event.volunteers - event.signedUp);
+         bar.setAttribute("aria-valuemin", 0);
+         bar.setAttribute("style", "width: " + 1 - event.signedUp / event.volunteers + 'px');;
+         
+         return bar;
+      }
    }
 ]);
 
 volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams', '$http', 'Facebook', 
    function($scope, $routeParams, $http, Facebook) {
       $scope.eventId = $routeParams.eventId;
+
+      $scope.organizer = 'Alpha Kappa Psi';
 
       $scope.facebookReady = false;
       $scope.loggedIn = false;
@@ -136,6 +149,7 @@ volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams', '$htt
             $scope.$apply(function() {
                Facebook.loggedIn = true;
                Facebook.user = response;
+               console.log(Facebook.user);
             });
          });
       }

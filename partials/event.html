@@ -1,26 +1,25 @@
 <div class="jumbotron">
-  <div class="row">
-    <div class="col-md-3">
-      <img class="banner event-featured-image" ng-src="{{event.img_url}}">
-    </div>
-    <div class="col-md-9">
-      <h1>{{event.title}}</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="input-group input-group-md">
-        <span class="input-group-addon">Filter</span>
-        <input type="text" class="form-control" ng-model="eventName" placeholder="Event Name">
+   <div class="row">
+      <div class="col-md-9">
+         <h1>{{event.title}}</h1>
+         <h2 class="text-muted">Organization: {{event.organizer}}</h2>
       </div>
-    </div>
-    <div class="col-md-8">
-      <div class="col-md-4" ng-repeat="category in categories">
-        <input type="checkbox" class="category-box-{{category.id}}" ng-click="setCategory(category.id)">
-        {{category.name}}
+      <div class="col-md-3 event-cats event-cats-lg">
+         <span class="glyphicon glyphicon-home"></span>
+         <span class="glyphicon glyphicon-trash"></span>
       </div>
-    </div>
-  </div>
+   </div>
+   <div class="row progress progress-striped active">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{event.signedUp}}" aria-valuemin="0" aria-valuemax="{{event.volunteers}}" style="width: {{event.signedUp / event.volunteers * 100}}%;">
+         {{event.signedUp}}
+      </div>
+   </div>
 
-  <button type="button" class="btn btn-primary btn-large" data-ng-show="!loggedIn" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Login with Facebook</button>
+   <div class="row event-info">
+   </div>
+   
+   <div>
+      <button type="button" class="btn btn-primary btn-large btn-success">Sign up!</button>
+      <button type="button" class="btn btn-primary btn-large" data-ng-show="!loggedIn" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Login with Facebook</button>
+   </div>
 </div>

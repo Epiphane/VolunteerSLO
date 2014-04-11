@@ -101,16 +101,35 @@ body {
 
 .event-bubble h4 {
   font-size: 22px;
+  margin-bottom: 0;
 }
 
 .event-bubble p {
   font-size: 16px;
 }
 
+.event-bubble .progress {
+   margin-bottom: 0;
+}
+
 .event-bubble .image {
   overflow: hidden;
   height: 120px;
   padding: 0;
+}
+
+.event-cats {
+  padding-top: 15px;
+  font-size: 28px;
+  text-align: right;
+}
+
+.event-cats-lg {
+  font-size: 40px;
+}
+
+.event-info {
+   text-align: left;
 }
 
 .input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {
