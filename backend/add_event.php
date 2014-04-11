@@ -3,23 +3,21 @@
 include "mysqlconnect.php";
 include "util.php";
 
-printf(PHP_EOL);
-
 if (!isset($result)) {
     echo "MySQL didn't load correctly :(";
 }
 else {
     $loggedIn = true;
     if ($loggedIn) {
-        var_dump($_POST);
-        
-        $title = $_POST["title"];
-        $description = $_POST["description"];
-        $img_url = $_POST["img_url"];
-        $max_volunteers = $_POST["max_volunteers"];
+        $headers = getallheaders();
+
+        $title = $headers["title"];
+        $description = $headers["description"];
+        $img_url = $headers["img_url"];
+        $max_volunteers = $headers["max_volunteers"];
         
         if (!check_if_set($title, $description, $img_url, $max_volunteers)) {
-            echo "Malformed request, yo";
+            echo '[{test: "Malformed request, yo"}]';
         }
         else {
             // Some argument error checking

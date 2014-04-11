@@ -9,8 +9,8 @@ function check_if_set() {
     
     for ($i = 0; $i < $argv; $i++) {
         if (!isset($arg_list[$i])) {
-            echo "Parameter $i not set!<br>";
-            printf(PHP_EOL);
+//            echo "Parameter $i not set!<br>";
+ //           printf(PHP_EOL);
             
             $result = false;
         }

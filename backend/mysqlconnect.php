@@ -7,9 +7,7 @@ else {
     $file = explode("\n", file_get_contents("./.config"));
     $username = $file[0];
     $password = $file[1];
-    echo "<div class='error-message' style='display: none'>";
     $mysqli = new mysqli("elliot.db", $username, $password, "volunteer");
-    echo "</div>";
     if ($mysqli->connect_errno) {
     
         //then I guess we're on localhost?
