@@ -80,6 +80,14 @@ body {
   float: left;
 }
 
+#map-canvas {
+   margin-bottom: 15px;
+}
+
+.signup-buttons {
+   text-align: center;
+}
+
 /* Supporting marketing content */
 .marketing {
   margin: 40px 0;

@@ -156,8 +156,32 @@ volunteerSLOControllers.controller('EventCtrl', ['$scope', '$routeParams', '$htt
 
       $scope.event = null;
 
+      $scope.mapReady = false;
+      $(document).ready(function() {
+         $scope.mapReady = true;
+
+         if($scope.event)
+            $scope.initializeMap($scope.event);
+      });
+
       $http.post('srv.php', { action: 'event', id: $scope.eventId }).success(function(data) {
          $scope.event = data;
+
+         if($scope.mapReady)
+            $scope.initializeMap($scope.event);
       });
+
+      $scope.initializeMap = function(event) {
+         var mapCanvas = document.getElementById("map-canvas");
+      
+         mapCanvas.style.height = $(mapCanvas).width() + "px";
+         
+         var mapOptions = {
+           center: new google.maps.LatLng(35.2821, -120.6487),
+           zoom: 15
+         };
+
+         $scope.map = new google.maps.Map(mapCanvas, mapOptions);
+      }
    }
 ]);

@@ -16,10 +16,15 @@
    </div>
 
    <div class="row event-info">
+      <div class="col-md-6">Stuff<br>
+      </div>
+      <div class="col-md-6">
+         <div id="map-canvas"></div>
+      </div>
    </div>
    
-   <div>
-      <button type="button" class="btn btn-primary btn-large btn-success">Sign up!</button>
-      <button type="button" class="btn btn-primary btn-large" data-ng-show="!loggedIn" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Login with Facebook</button>
+          <div class="row signup-buttons">
+            <button type="button" class="btn btn-primary btn-large btn-success">Sign up!</button>
+            <button type="button" class="btn btn-primary btn-large" data-ng-show="!loggedIn" data-ng-disabled="!facebookReady" data-ng-click="IntentLogin()">Login with Facebook</button>
    </div>
 </div>
